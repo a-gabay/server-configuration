@@ -1,0 +1,39 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Categories</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class = 'row'>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-info"> <strong>{{ message }}</strong> </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+    	<div class="row padding-top padding-bottom">
+    		<div class="col-md-1"></div>
+    		<div class="col-md-10 padding-none">
+    		</div>
+    		<div class="col-md-1"></div>
+    	</div>
+
+        <div class="row">
+            {% for category in categories %}
+                <div class="col-md-1"></div>
+                <div class="col-md-3 panel panel-default">
+                    <a class="panel-body" href = "{{url_for('showCategory', category_id = category.id)}}">
+                        <h3>{{category.name}}</h3>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

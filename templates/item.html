@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1>{{ items.name }}
+            <figure class="creator">
+                <img src="{{ creator.picture}}">
+                <figcaption>{{ creator.name }}</figcaption>
+            </figure>
+            </h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row"></div>
+        <h3 class="item__name">{{items.description}}</h3>
+        <a class="label label-warning" href='{{url_for('editCategoryItem', category_id = items.category_id, item_id=items.id ) }}'>Edit</a>
+        <a class="label label-danger" href='{{url_for('deleteCategoryItem', category_id = items.category_id, item_id=items.id ) }}'>Delete</a>
+    </div></div>
+{% endblock %}
